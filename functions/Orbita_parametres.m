@@ -1,29 +1,49 @@
-function [a,h,e,i_rad,OH_rad,w_rad,TH_rad] = Orbita_parametres (r_vec,v_vec,mu)
+% Transformation from Cartesan state to orbital elements
+% 
+% Imput arguments:
+%----------------------------------------------------
+% rr       [3x1]    position vector           [km]
+% vv       [3x1]    velocity vector           [km/s]
+% mu       [1x1]    gravitational parameter   [km^3/s^2]
+%
+%-----------------------------------------------------
+% Output arguments:
+% a           [1x1]    semi-major axis     [km]
+% h           [1x1]    angular momentum    [kg*m^2/s]
+% e           [1x1]    eccentricity        [-]
+% i           [1x1]    inclination         [rad]
+% OM          [1x1]    RAAN                [rad]
+% om          [1x1]    perimeter anomaly   [rad]
+% theta       [1x1]    true anomaly        [rad] 
+function [a,h,e,i,OM,om,theta] = Orbita_parametres (rr,vv,mu)
 
 if nargin == 2
     mu = 398600.44;
 end
 
 %modulo di r e v
-r  = norm(r_vec)
-v  = norm(v_vec)
+r  = norm(rr)
+v  = norm(vv)
 
-%calcolo semiasse 
+%calcolo a 
 a=1/(2/r-(v.^2)./mu);
 
-h_vec = cross(r_vec, v_vec);
+%calcolo e
+h_vec = cross(rr, vv);
 h = norm(h_vec);
 
-c1 = cross(v_vec, h_vec);
-e_vec = 1/mu*(c1 - mu*(r_vec/r) );
+c1 = cross(vv, h_vec);
+e_vec = 1/mu*(c1 - mu*(rr/r) );
 e = norm(e_vec);
 
+%calcolo i
 k_vec = [0; 0; 1];
 k = norm(k_vec);
 c2 = dot(h_vec,k_vec);
-i_rad = acos(c2./h*k);
-i_grad = rad2deg(i_rad);
+i = acos(c2./h*k);
+i_grad = rad2deg(i);
 
+%calcolo OM
 c3 = cross(k_vec, h_vec);
 n_vec = c3./norm(c3);
 
@@ -32,39 +52,40 @@ c4 = dot(I_vec,n_vec);
 
 %controllo segno di c4
 if n_vec(2) > 0
-    OH_rad = acos(c4);
-    OH_grad = rad2deg(OH_rad);
+    OM = acos(c4);
+    OM_grad = rad2deg(OM);
     
 else
-    OH_rad = 2*pi-acos(c4);
-    OH_grad = rad2deg(OH_rad);
+    OM = 2*pi-acos(c4);
+    OM_grad = rad2deg(OM);
 end
 
+%calcolo om
 c5 = dot(e_vec, k_vec);
 c6 = dot(n_vec, e_vec);
 
 %controllo segno di c5    
 if c5 > 0
-    w_rad = acos(c6./e);
-    w_grad = rad2deg(w_rad);
+    om = acos(c6./e);
+    om_grad = rad2deg(om);
     
 else
-    w_rad = -acos(c6./e) + 2*pi;
-    w_grad = rad2deg(w_rad);
+    om = -acos(c6./e) + 2*pi;
+    om_grad = rad2deg(om);
 end
 
-
-c7 = dot(v_vec, r_vec);
-c8 = dot(r_vec, e_vec);
+%calcolo theta
+c7 = dot(vv, rr);
+c8 = dot(rr, e_vec);
 
 %controllo segno di c7    
 if c7 > 0
-    TH_rad = acos(c8./(r*e));
-    TH_grad = rad2deg(TH_rad);
+    theta = acos(c8./(r*e));
+    TH_grad = rad2deg(theta);
     
 else
-    TH_rad = -acos(c8./(r*e)) + 2*pi;
-    TH_grad = rad2deg(TH_rad);
+    theta = -acos(c8./(r*e)) + 2*pi;
+    TH_grad = rad2deg(theta);
 end
 
 end
