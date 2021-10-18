@@ -1,0 +1,19 @@
+close all
+clear all
+clc
+
+
+load('dataA24.mat')
+
+
+
+%% change of plan,w,shape 
+
+    [TO(1).CPdelta_V,TO(1).delta_V2,TO(1).theta_1,TO(1).theta_2,TO(1).om_f,TO(1).alpha,TO(1).u_1,TO(1).u_2] = change_plane(PI.a,PI.e,PI.i,PI.OM,PI.om,PF.i,PF.OM);
+    [TO(1).delta_time, TO(1).t_1, TO(1).t_2, TO(1).orbital_period] = tempi(PI.a,PI.e,PI.theta,TO(1).theta_2);
+    [dv, teta1, teta2] = change_w(PI.a, PI.e, PI.om, PF.om, mu);
+    [delta_time, t_1, t_2, orbital_period] = tempi(a,e,theta_1,theta_2,mu)
+    [delta_tot, dv_1, dv_2, a_2, e_2] = biell(tipe, e_1, a_1, e_3, a_3, mu)
+
+    
+

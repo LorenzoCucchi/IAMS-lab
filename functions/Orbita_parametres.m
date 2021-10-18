@@ -40,6 +40,7 @@ e = norm(e_vec);
 k_vec = [0; 0; 1];
 k = norm(k_vec);
 c2 = dot(h_vec,k_vec);
+
 i = acos(c2./h*k);
 i_grad = rad2deg(i);
 

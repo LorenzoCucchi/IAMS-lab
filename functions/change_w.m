@@ -1,4 +1,4 @@
-function [dv, teta1, teta2] = change_w(a, e, w1, w2, mu)
+function [dV, teta1, teta2] = change_w(a, e, w1, w2, mu)
 
 
 

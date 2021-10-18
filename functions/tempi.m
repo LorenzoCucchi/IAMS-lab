@@ -1,6 +1,10 @@
-function [delta_time, t_1, t2, orbital_period] = tempi(a,e,mu,theta_1,theta_2)
+function [delta_time, t_1, t_2, orbital_period] = tempi(a,e,theta_1,theta_2,mu)
 
 % The output is the time between two points
+
+if nargin == 4
+    mu = 398600.44;
+end
 
     E_1 = 2*atan(sqrt((1-e)/(1+e))*tan(theta_1/2));
     E_2 = 2*atan(sqrt((1-e)/(1+e))*tan(theta_2/2));

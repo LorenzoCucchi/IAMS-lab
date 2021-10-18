@@ -36,7 +36,7 @@ p = a*(1-e^2);
 alpha = acos(cos(i_i)*cos(i_f)+sin(i_i)*sin(i_f)*cos(delta_OH));
 
 cos_u_1 = (cos(alpha)*cos(i_i)-cos(i_f))/(sin(alpha)*sin(i_i));
-cos_u_2 = (cos(i_i)-cos(alpha)*cos(i_f)/(sin(alpha)*sin(i_f));
+cos_u_2 = (cos(i_i)-cos(alpha)*cos(i_f))/(sin(alpha)*sin(i_f));
 sin_u_1 = sin(i_f)*(sin(delta_OH)/sin(alpha));
 sin_u_2 = sin(i_i)*(sin(delta_OH)/sin(alpha));
 
