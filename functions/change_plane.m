@@ -1,22 +1,22 @@
 function [delta_V,delta_V2,TH_i,TH_i2,w_f,alpha,u_1,u_2] = change_plane(a,e,i_i,OH_i,w_i,i_f,OH_f,mu)
 
 % INPUT
-
+%----------------------------------------------------
 % a = semiaxis initial orbit                                   [km]
-% e = eccentricity initial orbit 
+% e = eccentricity initial orbit                               [-]
 % i_i = initial orbit inclination                              [rad]
 % OH_i = longitude of ascending node of the initial orbit      [rad]
 % w_i = Anomaly of the perigee of the initial orbit            [rad]
 % i_f = finalorbit inclination                                 [rad]
 % OH_f = longitude of ascending node of the final orbit        [rad]
-
-
+%
+%
 % OUTPUT
-
+%----------------------------------------------------
 % delta_V = cost of the Maneuver
 % TH_i = maneuvre point position on the initial orbit          [rad]
 % w_f = Anomaly of the perigee of the final orbit,
-    % caused by changin the plane                              [rad]
+% caused by changin the plane                                  [rad]
     
 
 if nargin == 7

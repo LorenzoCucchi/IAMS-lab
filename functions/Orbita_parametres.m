@@ -6,8 +6,9 @@
 % vv       [3x1]    velocity vector           [km/s]
 % mu       [1x1]    gravitational parameter   [km^3/s^2]
 %
-%-----------------------------------------------------
+%
 % Output arguments:
+%-----------------------------------------------------
 % a           [1x1]    semi-major axis     [km]
 % h           [1x1]    angular momentum    [kg*m^2/s]
 % e           [1x1]    eccentricity        [-]
