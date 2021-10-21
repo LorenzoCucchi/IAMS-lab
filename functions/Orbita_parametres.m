@@ -16,50 +16,45 @@
 % OM          [1x1]    RAAN                [rad]
 % om          [1x1]    perimeter anomaly   [rad]
 % theta       [1x1]    true anomaly        [rad] 
+
 function [a,h,e,i,OM,om,theta] = Orbita_parametres (rr,vv,mu)
 
-if nargin == 2
+if nargin == 2                                       % earth's mu if not assigned by the user
     mu = 398600.44;
 end
 
-%modulo di r e v
-r  = norm(rr)
+r  = norm(rr)                                        % modulo di r e v
 v  = norm(vv)
 
-%calcolo a 
-a=1/(2/r-(v.^2)./mu);
 
-%calcolo e
-h_vec = cross(rr, vv);
-h = norm(h_vec);
+a=1/(2/r-(v.^2)./mu);                                % semi-major axis
+
+h_vec = cross(rr, vv);                               % angular momentum vector
+h = norm(h_vec);                                     % angular momentum
 
 c1 = cross(vv, h_vec);
-e_vec = 1/mu*(c1 - mu*(rr/r) );
-e = norm(e_vec);
+e_vec = 1/mu*(c1 - mu*(rr/r) );                      % eccentricity vector
+e = norm(e_vec);                                     % eccentricity
 
-%calcolo i
-k_vec = [0; 0; 1];
-k = norm(k_vec);
-c2 = dot(h_vec,k_vec);
 
-i = acos(c2./h*k);
-i_grad = rad2deg(i);
+k_vec = [0; 0; 1];                                   % unit vector k
+k = norm(k_vec);                                     
+h_k = dot(h_vec,k_vec);                              % k component of h
 
-%calcolo OM
-c3 = cross(k_vec, h_vec);
-n_vec = c3./norm(c3);
+i = acos(h_k./h*k);                                  % inclination [rad]
 
-I_vec = [1; 0; 0];
+
+c3 = cross(k_vec, h_vec);                            % node axis vector
+n_vec = c3./norm(c3);                                % node axis unit vector
+
+I_vec = [1; 0; 0];                                   % unit vector I
 c4 = dot(I_vec,n_vec);
 
 %controllo segno di c4
 if n_vec(2) > 0
-    OM = acos(c4);
-    OM_grad = rad2deg(OM);
-    
+    OM = acos(c4);                                   % RAAN  case n_j > 0                                  
 else
-    OM = 2*pi-acos(c4);
-    OM_grad = rad2deg(OM);
+    OM = 2*pi-acos(c4);                              % RAAN cas n_j < 0
 end
 
 %calcolo om
