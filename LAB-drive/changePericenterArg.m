@@ -15,4 +15,7 @@ DeltaV = 2 * sqrt (mu/p) * e * abs( sin ( Deltaom /2));
 thi = [ thi1 thi2 ]';
 thf = [ thf1 thf2 ]';
 
+
+
+
 end

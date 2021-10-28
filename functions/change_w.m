@@ -2,7 +2,6 @@ function [dV, teta1, teta2] = change_w(a, e, w1, w2, mu)
 
 
 
-
 if nargin == 4
     mu = 398600.44;
 end
