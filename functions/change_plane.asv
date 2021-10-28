@@ -65,11 +65,13 @@ if cos(TH_i)>0
 end
 
 v_teta = sqrt(mu/p)*(1+e*cos(TH_i));
+TH_i2 = TH_i + pi;
 
-
+%v_teta_2 = sqrt(mu/p)*(1+e*cos(TH_i2));
 
 delta_V = 2*v_teta*abs(sin(alpha/2));
 
+%delta_V2 = 2*v_teta_2*abs(sin(alpha/2));
 
 
 
