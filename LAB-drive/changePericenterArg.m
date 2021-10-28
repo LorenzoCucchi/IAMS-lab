@@ -1,5 +1,10 @@
 function [ DeltaV , thi , thf ] = changePericenterArg (a, e, om_i ,om_f , mu)
 
+
+if nargin == 4
+    mu = 398600.44;
+end
+
 Deltaom = abs(om_f - om_i );
 thi1 = Deltaom /2;
 thi2 = pi + Deltaom /2;
