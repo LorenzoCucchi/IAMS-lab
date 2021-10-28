@@ -1,4 +1,4 @@
-function [delta_V,delta_V2,TH_i,TH_i2,w_f,alpha,u_1,u_2] = change_plane(a,e,i_i,OH_i,w_i,i_f,OH_f,mu)
+function [delta_V,delta_V2,TH_i,TH_i2,w_f,alpha,u_1,u_2] = change_plane(a,e,i_i,OM_i,om_i,i_f,OM_f,mu)
 
 % INPUT
 %----------------------------------------------------
@@ -26,27 +26,27 @@ end
 % Difference between the two longitude of ascending nodes and the two
 % inclinations 
 
-delta_OH = OH_f - OH_i;
+delta_OM = OM_f - OM_i;
 delta_i = i_f - i_i;
 p = a*(1-e^2);
 
 
 % Check the case we are in
 
-alpha = acos(cos(i_i)*cos(i_f)+sin(i_i)*sin(i_f)*cos(delta_OH));
+alpha = acos(cos(i_i)*cos(i_f)+sin(i_i)*sin(i_f)*cos(delta_OM));
 
 cos_u_1 = (cos(alpha)*cos(i_i)-cos(i_f))/(sin(alpha)*sin(i_i));
 cos_u_2 = (cos(i_i)-cos(alpha)*cos(i_f))/(sin(alpha)*sin(i_f));
-sin_u_1 = sin(i_f)*(sin(delta_OH)/sin(alpha));
-sin_u_2 = sin(i_i)*(sin(delta_OH)/sin(alpha));
+sin_u_1 = sin(i_f)*(sin(delta_OM)/sin(alpha));
+sin_u_2 = sin(i_i)*(sin(delta_OM)/sin(alpha));
 
-if delta_OH > 0
+if delta_OM > 0
     if delta_i >= 0
 
        u_1 = atan2(sin_u_1,cos_u_1);
        u_2 = atan2(sin_u_2,cos_u_2);
        
-       TH_i = u_1 - w_i;
+       TH_i = u_1 - om_i;
        w_f = u_2 - TH_i;
        
     else
@@ -54,7 +54,7 @@ if delta_OH > 0
        u_1 = atan2(sin_u_1,-cos_u_1);
        u_2 = atan2(sin_u_2,-cos_u_2);
        
-       TH_i = 2*pi - u_1 - w_i;
+       TH_i = 2*pi - u_1 - om_i;
        w_f = 2*pi - u_2 - TH_i;
         
     end
@@ -66,7 +66,7 @@ else
        u_1 = atan2(sin_u_1,cos_u_1);
        u_2 = atan2(sin_u_2,cos_u_2);
        
-       TH_i = u_1 - w_i;
+       TH_i = u_1 - om_i;
        w_f = u_2 - TH_i;
     
     else
@@ -74,7 +74,7 @@ else
        u_1 = atan2(sin_u_1,-cos_u_1);
        u_2 = atan2(sin_u_2,-cos_u_2);
        
-       TH_i = 2*pi - u_1 - w_i;
+       TH_i = 2*pi - u_1 - om_i;
        w_f = 2*pi - u_2 - TH_i;
         
     end
