@@ -17,14 +17,14 @@
 % om          [1x1]    perimeter anomaly   [rad]
 % theta       [1x1]    true anomaly        [rad] 
 
-function [a,h,e,i,OM,om,theta] = Orbita_parametres (rr,vv,mu)
+function [a,h,e,i,OM,om,theta] = rv2param (rr,vv,mu)
 
 if nargin == 2                                       % earth's mu if not assigned by the user
     mu = 398600.44;
 end
 
-r  = norm(rr)                                        % modulo di r e v
-v  = norm(vv)
+r  = norm(rr);                                        % modulo di r e v
+v  = norm(vv);
 
 
 a=1/(2/r-(v.^2)./mu);                                % semi-major axis

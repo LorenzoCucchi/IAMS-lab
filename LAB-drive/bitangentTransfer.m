@@ -1,7 +1,7 @@
 function [ DeltaV1 , DeltaV2 , DeltaV , Deltat , a_t , e_t ,periApoInvTrue ] = bitangentTransfer (ai , ei , af , ef , type ,mu)
 
 switch lower ( type )
-    case {’pa ’}
+    case {'pa'}
         % Temporary values of:
         % raggio pericentro orbita di trasferimento
         r_p_tmp = ai *(1 - ei);
@@ -18,7 +18,7 @@ switch lower ( type )
         % l’ intervallo di tempo e’ la meta ’ del periodo dell ’
         
         Deltat = pi *( a_t ^3/ mu) ^(1/2) ;
-    case {’ap ’}
+    case {'ap'}
         r_p_tmp = af *(1 - ef);
         r_a_tmp = ai *(1+ ei);
         r_a = max ( r_p_tmp , r_a_tmp );
@@ -28,7 +28,7 @@ switch lower ( type )
         DeltaV1 = abs ( (mu *((2/ r_p) -(1/ a_t ))) ^(1/2) - (mu*((2/ r_p ) -(1/ ai))) ^(1/2) );
         DeltaV2 = abs ( (mu *((2/ r_a) -(1/ af))) ^(1/2) - (mu *((2/r_a ) -(1/ a_t ))) ^(1/2) );
         Deltat = pi *( a_t ^3/ mu) ^(1/2) ;
-    case {’pp ’}
+    case {'pp'}
         r_p_tmp = ai *(1 - ei);
         r_a_tmp = af *(1 - ef);
         r_a = max ( r_p_tmp , r_a_tmp );
@@ -38,7 +38,7 @@ switch lower ( type )
         DeltaV1 = abs ( (mu *((2/ r_p) -(1/ a_t ))) ^(1/2) - (mu*((2/ r_p ) -(1/ ai))) ^(1/2) );
         DeltaV2 = abs ( (mu *((2/ r_a) -(1/ af))) ^(1/2) - (mu *((2/r_a ) -(1/ a_t ))) ^(1/2) );
         Deltat = pi *( a_t ^3/ mu) ^(1/2) ;
-    case {’aa ’}
+    case {'aa'}
         r_p_tmp = ai *(1+ ei);
         r_a_tmp = af *(1+ ef);
         r_a = max ( r_p_tmp , r_a_tmp );
@@ -49,14 +49,14 @@ switch lower ( type )
         DeltaV2 = abs ( (mu *((2/ r_a) -(1/ af))) ^(1/2) - (mu *((2/r_a ) -(1/ a_t ))) ^(1/2) );
         Deltat = pi *( a_t ^3/ mu) ^(1/2) ;
     otherwise
-        error (’ERRORE ’);
+        error ('ERRORE');
 
 end
 
 if r_p_tmp > r_a_tmp
 
     periApoInvTrue = 1;
-    warning (’Peri <-> Apo Inversion !’)
+    warning ('Peri <-> Apo Inversion !')
 
 else
 
@@ -65,7 +65,7 @@ else
 end
 
 
-% eccentricity ’
+% eccentricity
 e_t = (r_a -r_p)/( r_a+ r_p );
 
 DeltaV = DeltaV1 + DeltaV2 ;
