@@ -39,7 +39,7 @@ e = norm(e_vec);                                     % eccentricity
 
 k_vec = [0; 0; 1];                                   % unit vector k
 k = norm(k_vec);                                     
-h_k = dot(h_vec,k_vec);                              % k component of h
+h_k = dot(h_vec,k_vec);                              %node vector k component of h
 
 i = acos(h_k./h*k);                                  % inclination [rad]
 
