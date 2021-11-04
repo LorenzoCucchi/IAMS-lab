@@ -28,14 +28,20 @@ load('dataA24.mat')
     orb(1,7)=orb(1,7)-2*pi;
     orb(2,6)=orb(1,7);
     
-    [orb(1,12), orb(1,13), orb(1,14), TO(1).orbital_period(1)] = tempi(PI.a,PI.e,PI.theta,orb(1,7));
+    [orb(1,12), orb(1,13), orb(1,14), TO(1).orbital_period(1)] = Theta2t(PI.a,PI.e,PI.theta,orb(1,7));
     
     % change of w    %conviene utilizzare il punto B nel nostro caso e
     % utilizzare il TO(1).theta_2 nel change of plan e il TO(2).theta_2 per
     % ottenere il tempo minore possibile
-    [TO(2).delta_V, TO(2).theta_1, TO(2).theta_2] = change_w_prova(PI.a, PI.e, PI.om, PF.om,TO(1).t_2(1));
-    [TO(2).delta_time(1), TO(2).t_1, TO(2).t_2, TO(2).orbital_period] = tempi(PI.a,PI.e,TO(1).theta_1,TO(2).theta_1);
-    [TO(2).delta_time(2), TO(2).t_1, TO(2).t_2, TO(2).orbital_period] = tempi(PI.a,PI.e,TO(1).theta_1,TO(2).theta_2);
+    orb(3,1)=orb(2,1);
+    orb(3,2)=orb(2,2);
+    orb(3,3)=orb(2,3);
+    orb(3,4)=orb(2,4);
+    orb(3,5)=PF.om;
+    [orb(3,8), orb(2,7), orb(3,6)] = Change_w(PI.a, PI.e, PI.om, PF.om,orb(2,6))
+    orb(2,7)=orb(2,7)+pi;
+    [orb(2,12), orb(2,13), orb(2,14), TO(2).orbital_period] = Theta2t(PI.a,PI.e,orb(2,6),orb(2,7));
+    
 
     %change of shape
     tipe = 1;
