@@ -38,7 +38,7 @@ for j = 1:numberOrbits
     VV = zeros (3, length ( th_v ));
 
     for k = 1: length ( th_v )
-        [R,V] = param2rv ( a, e, j, OM, om, th_v(k));
+        [R,V] = param2rv ( a, e, i, OM, om, th_v(k));
         RR (:,k) = R;
         VV (:,k) = V;
     end

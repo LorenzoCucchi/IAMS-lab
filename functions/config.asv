@@ -4,8 +4,8 @@ clc
 
 
 %%
-% orbit matrix [1,2,3, 4, 5, 6,  7,  8,     9, 10, 11, 12, 13,14]
-% orbit matrix [a,e,i,OM,om,th1,th2,dVtot,dV1,dV2,dV3,dT,t1,t2]
+% orbit matrix [1,2,3, 4, 5,  6,  7,    8,  9, 10, 11, 12, 13, 14]
+% orbit matrix [a,e,i,OM,om,th1,th2,dVtot,dV1,dV2,dV3, dT, t1, t2]
 
 load('dataA24.mat')
 
@@ -22,8 +22,11 @@ load('dataA24.mat')
 
     % change of plan
     orb(2,:)=orb(1,:);
-    [TO(1).delta_V,orb(1,7),orb(2,5)] = change_plane(PI.a,PI.e,PI.i,PI.OM,PI.om,PF.i,PF.OM);
-    orb(2,7)=orb(1,7);
+    orb(2,4)=PF.OM;
+    orb(2,3)=PF.i
+    [orb(,orb(1,7),orb(2,5)] = change_plane(PI.a,PI.e,PI.i,PI.OM,PI.om,PF.i,PF.OM)
+    orb(1,7)=orb(1,7)-2*pi;
+    orb(2,6)=orb(1,7);
     
     [TO(1).delta_time(1), TO(1).t_1(1), TO(1).t_2(1), TO(1).orbital_period(1)] = tempi(PI.a,PI.e,PI.theta,TO(1).theta_1);
     
