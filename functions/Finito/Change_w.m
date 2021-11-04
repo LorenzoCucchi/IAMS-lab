@@ -1,4 +1,4 @@
-function [dV, theta_i, theta_f] = change_w_prova(a, e, w1, w2, theta ,mu)
+function [dV, theta_i, theta_f] = Change_w(a, e, w1, w2, theta ,mu)
 % This function changes the pericenter anomaly returning the deltaV,
 % the transfer point theta1 and the converted point theta2 on the final
 % orbit due to the change of the pericenter anomaly. 
@@ -11,6 +11,7 @@ function [dV, theta_i, theta_f] = change_w_prova(a, e, w1, w2, theta ,mu)
 % w1          [1x1]    first pericenter anomaly              [rad]
 % w2          [1x1]    final pericenter anomaly              [rad]
 % theta       [1x1]    true anomaly of the starting point    [rad]
+% mu          [1x1]    standard gravitaional parameter       [m^3/s^2]
 %
 % Output arguments:
 %----------------------------------------------------

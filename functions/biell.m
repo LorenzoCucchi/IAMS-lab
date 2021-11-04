@@ -1,5 +1,26 @@
 function [delta_tot, dv_1, dv_2, a_2, e_2] = biell(tipe, e_1, a_1, e_3, a_3, mu)
-
+% (da modificare)This function changes the pericenter anomaly returning the deltaV,
+% the transfer point theta1 and the converted point theta2 on the final
+% orbit due to the change of the pericenter anomaly. 
+% 
+% Imput arguments:
+% %-----------------------------------------------------
+%
+% a           [1x1]    semi-major axis                       [km]
+% e           [1x1]    eccentricity                          [-]
+% w1          [1x1]    first pericenter anomaly              [rad]
+% w2          [1x1]    final pericenter anomaly              [rad]
+% theta       [1x1]    true anomaly of the starting point    [rad]
+% mu          [1x1]    standard gravitaional parameter       [m^3/s^2]
+%
+% Output arguments:
+%----------------------------------------------------
+% dV          [3x1]    velocity difference          [km]
+% theta_i     [1x1]    initial orbit transfer       [rad]
+% theta_f     [1x1]    final orbit transfer point   [rad]
+%
+%
+% 
 if nargin == 5
     mu = 398600.44;
 end

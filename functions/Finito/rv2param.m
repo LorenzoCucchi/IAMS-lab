@@ -1,14 +1,15 @@
+function [a,h,e,i,OM,om,theta] = rv2param (rr,vv,mu)
 % Transformation from Cartesan state to orbital elements
 % 
 % Imput arguments:
-%----------------------------------------------------
-% rr       [3x1]    position vector           [km]
-% vv       [3x1]    velocity vector           [km/s]
-% mu       [1x1]    gravitational parameter   [km^3/s^2]
+%-------------------------------------------------------------
+% rr          [3x1]    position vector                    [km]
+% vv          [3x1]    velocity vector                    [km/s]
+% mu          [1x1]    standard gravitational parameter   [km^3/s^2]
 %
 %
 % Output arguments:
-%-----------------------------------------------------
+%--------------------------------------------------------------
 % a           [1x1]    semi-major axis     [km]
 % h           [1x1]    angular momentum    [kg*m^2/s]
 % e           [1x1]    eccentricity        [-]
@@ -17,7 +18,6 @@
 % om          [1x1]    perimeter anomaly   [rad]
 % theta       [1x1]    true anomaly        [rad] 
 
-function [a,h,e,i,OM,om,theta] = rv2param (rr,vv,mu)
 
 if nargin == 2                                       % earth's mu if not assigned by the user
     mu = 398600.44;
