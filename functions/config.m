@@ -23,8 +23,8 @@ load('dataA24.mat')
     % change of plan
     orb(2,:)=orb(1,:);
     orb(2,4)=PF.OM;
-    orb(2,3)=PF.i
-    [orb(2,8),orb(1,7),orb(2,5)] = change_plane(PI.a,PI.e,PI.i,PI.OM,PI.om,PF.i,PF.OM)
+    orb(2,3)=PF.i;
+    [orb(2,8),orb(1,7),orb(2,5)] = change_plane(PI.a,PI.e,PI.i,PI.OM,PI.om,PF.i,PF.OM);
     orb(1,7)=orb(1,7)-2*pi;
     orb(2,6)=orb(1,7);
     
@@ -38,26 +38,26 @@ load('dataA24.mat')
     orb(3,3)=orb(2,3);
     orb(3,4)=orb(2,4);
     orb(3,5)=PF.om;
-    [orb(3,8), orb(2,7), orb(3,6)] = Change_w(PI.a, PI.e, PI.om, PF.om,orb(2,6))
-    orb(2,7)=orb(2,7)+pi;
+    [orb(3,8), orb(2,7), orb(3,6)] = Change_w(orb(3,1), orb(3,2), orb(2,5), orb(3,5),orb(2,6));
     [orb(2,12), orb(2,13), orb(2,14), TO(2).orbital_period] = Theta2t(PI.a,PI.e,orb(2,6),orb(2,7));
     
 
     %change of shape
     tipe = 1;
     switch tipe
-    case 1
-        orb(4,6) = 0;
-        orb(4,7) = pi;
-    case 2
-        orb(4,6) = pi;
-        orb(4,7) = 0;
-    case 3
-        orb(4,6) = pi;
-        orb(4,7) = pi;
-    case 4
-        orb(4,6) = 0;
-        orb(4,7) = 0;  
+        case 1
+            orb(3,7) = 2*pi;
+            orb(4,6) = 0;
+            orb(4,7) = pi;
+        case 2
+            orb(4,6) = pi;
+            orb(4,7) = 0;
+        case 3
+            orb(4,6) = pi;
+            orb(4,7) = pi;
+        case 4
+            orb(4,6) = 0;
+            orb(4,7) = 0;  
     end
 
     orb(4,3)=orb(3,3);
@@ -66,5 +66,11 @@ load('dataA24.mat')
     [orb(4,8), orb(4,9), orb(4,10), orb(4,1), orb(4,2)] = Bitangent_Transfer(tipe, PI.e, PI.a, PF.e, PF.a);
     [TO(3).delta_time(1), TO(3).t_1, TO(3).t_2, TO(3).orbital_period] = tempi(PI.a,PI.e,TO(2).theta_2,TO(3).theta_1);
     [TO(3).delta_time(2), TO(3).t_1, TO(3).t_2, TO(3).orbital_period] = tempi(TO(3).a_2,TO(3).e_2,TO(3).theta_1,TO(3).theta_2);
-
+    orb(5,1)=PF.a;
+    orb(5,2)=PF.e;
+    orb(5,3)=PF.i;
+    orb(5,4)=PF.OM;
+    orb(5,5)=PF.om;
+    orb(5,6)=orb(4,7);
+    orb(5,7)=PF.theta;
 

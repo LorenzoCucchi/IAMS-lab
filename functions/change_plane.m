@@ -59,7 +59,6 @@ else
 end
 
 
-%  Start the change
 if cos(TH_i)>0
     TH_i=TH_i+pi;
 end

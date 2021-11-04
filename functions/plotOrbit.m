@@ -17,9 +17,26 @@ function plotOrbit(orbit,dth)
 
 [numberOrbits,~] = size(orbit)
 
-[x,y,z] = ellipsoid (0, 0, 0, 6378 , 6378 , 6378 , 360 );
-plot3(x,y,z)
+markerColors = colormap ( lines ( numberOrbits ));
+
+
+rt=6371;                                                               % raggio terrestre
+[xs,ys,zs]=sphere;
+xs=xs*rt;
+ys=ys*rt;
+zs=-zs*rt;
+earth=surface(xs,ys,zs); 
+shading flat;
+imData=imread('map.jpg');                                              % lettura mappa(inserire qua 'nomeMappa.jpg' che deve stare nella stessa cartella)
+set(earth,'facecolor','texturemap','cdata',imData,'edgecolor','none'); % incolla mappa su sfera
+axis square
+
 hold on
+grid on
+title("3D ORBIT");
+xlabel("equinox line [km]");
+ylabel("y [km]");
+zlabel("z [km]");
 
 for j = 1:numberOrbits    
     a = orbit(j,1);
@@ -33,7 +50,7 @@ for j = 1:numberOrbits
     
     if thf <= thi % the  =r sign involves the case in which th0 == thf 
         % ( convention : last path to plot , i.e. full orbit to play )
-        thf = thi + 2* pi;
+        thf = thf + 2*pi;
     end
    
     numTh = round (abs(thf -thi )/dth);
@@ -59,7 +76,8 @@ for j = 1:numberOrbits
   
     plot3(X,Y,Z)
     hold on
-    quiver3 (X (1) , Y(1) , Z (1) ,V_X (1) , V_Y (1) , V_Z (1),700) ;
+    maneuvPoint = plot3 (X (1) , Y(1) , Z(1) ,'d','MarkerSize', 10 ,'MarkerEdgeColor', markerColors (numberOrbits , :) ,'MarkerFaceColor', markerColors (numberOrbits , :));
+    quiver3 (X (1) , Y(1) , Z (1) ,V_X (1) , V_Y (1) , V_Z (1),700,"filled",'-r','LineWidth' ,1.5 ,'MaxHeadSize',10) ;
     
 
 end

@@ -27,13 +27,20 @@ if nargin == 5
 end
 
 
-Deltaom = abs(w2 - w1) ;
+Deltaom = w2 - w1 ;
+if Deltaom > 0
+    thi1 = Deltaom/2;
+    thi2 = pi + Deltaom/2;
+    
+    thf1 = 2* pi - Deltaom /2;
+    thf2 = pi - Deltaom /2;
 
-thi1 = Deltaom/2;
-thi2 = pi + Deltaom/2;
-
-thf1 = 2* pi - Deltaom /2;
-thf2 = pi - Deltaom /2;
+else
+    thi1 = pi-Deltaom/2;
+    thi2 = 2*pi- Deltaom/2;
+    
+    thf1 = 2* pi - Deltaom /2;
+    thf2 = pi - Deltaom /2;
 
 
 p = a*(1 -e^2);
@@ -45,30 +52,33 @@ thi = [ thi1 thi2 ]';
 thf = [ thf1 thf2 ]';
 
 
-th_1 = wrapTo2Pi ( thi(1));
-th_2 = wrapTo2Pi ( thi(2));
-th_PC = wrapTo2Pi ( theta );
+dist = thi - theta;
 
-dist1 = th_1 - th_PC 
-dist2 = th_2 - th_PC 
+if dist(1)<dist(2)
+    
+    chosen = 1;
+    
+    if ( dist(1) * dist(2)< 0) && thi(1) <pi && theta >= pi % particular case
+    
+        chosen = 2;
 
-if ( dist1 < dist2 )
-chosenTh = 1;
-if ( dist1 * dist2 < 0)  % particular case
-chosenTh = 2;
+    end
 
-end
 else
-chosenTh = 2;
-if ( dist1 * dist2 < 0)  % particular case
-chosenTh = 1;
+   
+    chosen = 2;
+   
+    if ( dist(1) * dist(2) < 0) && thi(2) <pi && theta >= pi % particular case
+    
+        chosen = 1;
+
+    end
+
 end
-end
 
 
-
-theta_i = wrapTo2Pi(thi(chosenTh));
-theta_f = wrapTo2Pi(thf(chosenTh));
+theta_i = wrapTo2Pi(thi(chosen));
+theta_f = wrapTo2Pi(thf(chosen));
 
 
 end
