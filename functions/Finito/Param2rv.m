@@ -1,15 +1,16 @@
-function [rr,vv] = param2rv(a,e,i,OM,om,theta,mu)
+function [rr,vv] = Param2rv(a,e,i,OM,om,theta,mu)
 % Transformation from Cartesan state to orbital elements
 % 
 % Imput arguments:
-% %-----------------------------------------------------
+% -----------------------------------------------------
 %
-% a           [1x1]    semi-major axis     [km]
-% e           [1x1]    eccentricity        [-]
-% i           [1x1]    inclination         [rad]
-% OM          [1x1]    RAAN                [rad]
-% om          [1x1]    perimeter anomaly   [rad]
-% theta       [1x1]    true anomaly        [rad]
+% a           [1x1]    semi-major axis                    [km]
+% e           [1x1]    eccentricity                       [-]
+% i           [1x1]    inclination                        [rad]
+% OM          [1x1]    RAAN                               [rad]
+% om          [1x1]    perimeter anomaly                  [rad]
+% theta       [1x1]    true anomaly                       [rad]
+% mu          [1x1]    standard gravitaional parameter    [m^3/s^2]
 %
 % Output arguments:
 %----------------------------------------------------

@@ -1,30 +1,33 @@
-function [ DeltaV , om_t , th_t , a_t] = changeOrbitShape (a_i ,e_i , i_i , OM_i , om_i , i_t , OM_t , e_t , mu)
+function [ DeltaV , om_t , th_t , a_t] = ChangeOrbitShape (a_i ,e_i , i_i , OM_i , om_i , i_t , OM_t , e_t , mu)
 % This function change the orbital plane (Omega,i) and the shape of the
 % orbit (eccentricity vector) with a single impulse.
 % 
 % 
 % Imput arguments:
-% -------------------------------------------------------
+% ---------------------------------------------------------------------
 %
-% a_i           [1x1]    initial semi-major axis     [km]
-% e_i           [1x1]    initial eccentricity        [-]
-% i_i           [1x1]    initial inclination         [rad]
-% OM_i          [1x1]    initial RAAN                [rad]
-% om_i          [1x1]    initial perimeter anomaly   [rad]
-% i_t           [1x1]    terminal inclination        [rad]
-% OM_t          [1x1]    terminal RAAN               [rad]
-% e_t           [1x1]    terminal eccentricity       [-]
-% 
+% a_i           [1x1]    initial semi-major axis                 [km]
+% e_i           [1x1]    initial eccentricity                    [-]
+% i_i           [1x1]    initial inclination                     [rad]
+% OM_i          [1x1]    initial RAAN                            [rad]
+% om_i          [1x1]    initial perimeter anomaly               [rad]
+% i_t           [1x1]    terminal inclination                    [rad]
+% OM_t          [1x1]    terminal RAAN                           [rad]
+% e_t           [1x1]    terminal eccentricity                   [-]
+% mu            [1x1]    standard gravitaional parameter         [m^3/s^2]
 %
 % Output arguments:
-%-----------------------------------------------------------
-% DeltaV       [1x1]    velocity difference          [km/s]
-% om_t         [1x1]    terminal perimeter anomaly   [rad]
-% th_t         [1x1]    terminal true anomaly        [rad]
-% a_t          [1x1]    terminal semi-major axis     [km]
+%---------------------------------------------------------------------
+% DeltaV        [1x1]    velocity difference                    [km/s]
+% om_t          [1x1]    terminal perimeter anomaly             [rad]
+% th_t          [1x1]    terminal true anomaly                  [rad]
+% a_t           [1x1]    terminal semi-major axis               [km]
 %
 % 
 
+if nargin == 4
+    mu = 398600.44;
+end
 
 DeltaOM = OM_t - OM_i ;
 Deltai = i_t - i_i ;
