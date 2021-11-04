@@ -28,7 +28,7 @@ load('dataA24.mat')
     orb(1,7)=orb(1,7)-2*pi;
     orb(2,6)=orb(1,7);
     
-    [TO(1).delta_time(1), TO(1).t_1(1), TO(1).t_2(1), TO(1).orbital_period(1)] = tempi(PI.a,PI.e,PI.theta,TO(1).theta_1);
+    [orb(1,12), orb(1,13), orb(1,14), TO(1).orbital_period(1)] = tempi(PI.a,PI.e,PI.theta,orb(1,7));
     
     % change of w    %conviene utilizzare il punto B nel nostro caso e
     % utilizzare il TO(1).theta_2 nel change of plan e il TO(2).theta_2 per
