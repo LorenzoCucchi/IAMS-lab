@@ -1,5 +1,5 @@
 function [delta_tot, dv_1, dv_2, a_2, e_2] = Bitangent_Transfer(tipe, e_1, a_1, e_3, a_3, mu)
-% Bitangent transfer between two orbits in apsidal points
+% This function actuate a bitangent transfer between two orbits in apsidal points
 %
 % Imput arguments:
 % %-----------------------------------------------------
@@ -16,11 +16,11 @@ function [delta_tot, dv_1, dv_2, a_2, e_2] = Bitangent_Transfer(tipe, e_1, a_1, 
 %
 % Output arguments:
 %----------------------------------------------------
-% delta_tot          [1x1]    total velocity difference on manoeuvre        [km/s]
-% dv_1     [1x1]    initial orbit transfer       [rad]
-% dv_2     [1x1]    final orbit transfer point   [rad]
-% a_2        [1x1]    initial semi-major axis                       [km]
-% e_2
+% delta_tot   [1x1]    total velocity difference on manoeuvr    [km/s]
+% dv_1        [1x1]    initial orbit transfer                   [rad]
+% dv_2        [1x1]    final orbit transfer point               [rad]
+% a_2         [1x1]    initial semi-major axis                  [km]
+% e_2         [1x1]    terminal eccentricity                    [-]
 % 
 if nargin == 5
     mu = 398600.44;
