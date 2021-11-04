@@ -17,6 +17,10 @@ function plotOrbit(orbit,dth)
 
 [numberOrbits,~] = size(orbit)
 
+[x,y,z] = ellipsoid (0, 0, 0, 6378 , 6378 , 6378 , 360 );
+plot3(x,y,z)
+hold on
+
 for j = 1:numberOrbits    
     a = orbit(j,1);
     e = orbit(j,2);
@@ -55,5 +59,7 @@ for j = 1:numberOrbits
   
     plot3(X,Y,Z)
     hold on
+    quiver3 (X (1) , Y(1) , Z (1) ,V_X (1) , V_Y (1) , V_Z (1),700) ;
+    
 
 end

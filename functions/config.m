@@ -47,21 +47,23 @@ load('dataA24.mat')
     tipe = 1;
     switch tipe
     case 1
-        TO(3).theta_1 = 0;
-        TO(3).theta_2 = pi;
+        orb(4,6) = 0;
+        orb(4,7) = pi;
     case 2
-        TO(3).theta_1 = pi;
-        TO(3).theta_2 = 0;
+        orb(4,6) = pi;
+        orb(4,7) = 0;
     case 3
-        TO(3).theta_1 = pi;
-        TO(3).theta_2 = pi;
+        orb(4,6) = pi;
+        orb(4,7) = pi;
     case 4
-        TO(3).theta_1 = 0;
-        TO(3).theta_2 = 0;  
+        orb(4,6) = 0;
+        orb(4,7) = 0;  
     end
 
-
-    [TO(3).delta_V, TO(3).dv_1, TO(3).dv_2, TO(3).a_2, TO(3).e_2] = biell(tipe, PI.e, PI.a, PF.e, PF.a);
+    orb(4,3)=orb(3,3);
+    orb(4,4)=orb(3,4);
+    orb(4,5)=orb(3,5);
+    [orb(4,8), orb(4,9), orb(4,10), orb(4,1), orb(4,2)] = Bitangent_Transfer(tipe, PI.e, PI.a, PF.e, PF.a);
     [TO(3).delta_time(1), TO(3).t_1, TO(3).t_2, TO(3).orbital_period] = tempi(PI.a,PI.e,TO(2).theta_2,TO(3).theta_1);
     [TO(3).delta_time(2), TO(3).t_1, TO(3).t_2, TO(3).orbital_period] = tempi(TO(3).a_2,TO(3).e_2,TO(3).theta_1,TO(3).theta_2);
 
