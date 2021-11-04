@@ -59,8 +59,8 @@ p_t = p_i *(1+ e_t ) /(1+ e_i *cos( th_t ));
 a_t = p_t /(1 - e_t ^2);
 
 om_t = om_i + th_t ;
-[~, v_i ] = param2rv (a_i ,e_i ,i_i ,OM_i ,om_i ,th_t , mu);
-[~, v_t ] = param2rv (a_t ,e_t ,i_i ,OM_i ,om_t ,0, mu);
+[~, v_i ] = Param2rv (a_i ,e_i ,i_i ,OM_i ,om_i ,th_t , mu);
+[~, v_t ] = Param2rv (a_t ,e_t ,i_i ,OM_i ,om_t ,0, mu);
 
 
 DeltaV = sqrt ( norm ( v_i)^2 + norm (v_t)^2 - 2* dot (v_i , v_t ));
