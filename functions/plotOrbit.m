@@ -78,6 +78,8 @@ for j = 1:numberOrbits
     hold on
     maneuvPoint = plot3 (X (1) , Y(1) , Z(1) ,'d','MarkerSize', 10 ,'MarkerEdgeColor', markerColors (numberOrbits , :) ,'MarkerFaceColor', markerColors (numberOrbits , :));
     quiver3 (X (1) , Y(1) , Z (1) ,V_X (1) , V_Y (1) , V_Z (1),700,"filled",'-r','LineWidth' ,1.5 ,'MaxHeadSize',10) ;
-    
+    [R_peri ,~] = Param2rv (a,e,i,OM ,om ,0);
+    [R_apo ,~] = Param2rv (a,e,i,OM ,om ,pi);
+    plot3 ([ R_peri(1) ,R_apo(1) ],[ R_peri(2),R_apo(2) ],[ R_peri(3) ,R_apo(3)],'-.b','LineWidth'   ,1); % semi - major axis
 
 end

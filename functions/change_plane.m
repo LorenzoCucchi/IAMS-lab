@@ -63,6 +63,7 @@ if cos(TH_i)>0
     TH_i=TH_i+pi;
 end
 
+TH_i = wrapTo2Pi(TH_i);
 v_teta = sqrt(mu/p)*(1+e*cos(TH_i));
 
 

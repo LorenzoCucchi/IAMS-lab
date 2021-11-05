@@ -1,0 +1,3 @@
+Casi analizzati
+
+Case 1: cambio piano --> cambio omeghino --> trasferimento bitangente perigeo-apogeo
