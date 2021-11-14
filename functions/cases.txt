@@ -1,3 +1,7 @@
 Casi analizzati
 
-Case 1: cambio piano --> cambio omeghino --> trasferimento bitangente perigeo-apogeo
+Case 1: cambio piano --> cambio omeghino --> trasferimento bitangente perigeo-apogeo 7.2032 Km/s  592.295 min   
+
+Case 2: cambio piano --> cambio omeghino --> trasferimento bitangente apogeo-perigeo 7.2499 Km/s  277.07  min
+
+Case 3: eccentricità --> piano --> omeghino --> eccentricità                         6.7075 Km/s  272.097  min       

@@ -81,5 +81,6 @@ for j = 1:numberOrbits
     [R_peri ,~] = Param2rv (a,e,i,OM ,om ,0);
     [R_apo ,~] = Param2rv (a,e,i,OM ,om ,pi);
     plot3 ([ R_peri(1) ,R_apo(1) ],[ R_peri(2),R_apo(2) ],[ R_peri(3) ,R_apo(3)],'-.b','LineWidth'   ,1); % semi - major axis
+    
 
 end

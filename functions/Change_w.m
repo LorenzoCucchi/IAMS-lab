@@ -49,8 +49,8 @@ th_1 = wrapTo2Pi ( thi(1));
 th_2 = wrapTo2Pi ( thi(2));
 th_PC = wrapTo2Pi ( theta );
 
-dist1 = th_1 - th_PC 
-dist2 = th_2 - th_PC 
+dist1 = th_1 - th_PC;
+dist2 = th_2 - th_PC;
 
 if ( dist1 < dist2 )
 chosenTh = 1;
