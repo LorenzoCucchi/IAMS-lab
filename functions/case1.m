@@ -32,20 +32,26 @@ load('dataA24.mat')
     % change of w    %conviene utilizzare il punto B nel nostro caso e
     % utilizzare il TO(1).theta_2 nel change of plan e il TO(2).theta_2 per
     % ottenere il tempo minore possibile
+
+    if(abs(PF.om-orb(2,5))>(pi/2))
+        orb(3,5)=PF.om+pi;
+    else
+        orb(3,5)=PF.om
+    end
+
     orb(3,1)=orb(2,1);
     orb(3,2)=orb(2,2);
     orb(3,3)=orb(2,3);
     orb(3,4)=orb(2,4);
-    orb(3,5)=PF.om;
+    
     [orb(3,8), orb(2,7), orb(3,6)] = Change_w(orb(3,1), orb(3,2), orb(2,5), orb(3,5),orb(2,6));
     [orb(2,12), orb(2,13), orb(2,14), orb(2,15)] = Theta2t(PI.a,PI.e,orb(2,6),orb(2,7));
     
 
     %change of shape
-    tipe = 1;
+    tipe = 3;
     switch tipe
         case 1
-            orb(3,7) = 2*pi;
             orb(4,6) = 0;
             orb(4,7) = pi;
         case 2
@@ -53,13 +59,13 @@ load('dataA24.mat')
             orb(4,7) = 0;
         case 3
             orb(4,6) = pi;
-            orb(4,7) = pi;
+            orb(4,7) = 0;
         case 4
             orb(4,6) = 0;
             orb(4,7) = 0;  
     end
     
-    
+    orb(3,7) = pi;
     [orb(3,12), orb(3,13), orb(3,14), orb(3,15)] = Theta2t(orb(3,1),orb(3,2),orb(3,6),orb(3,7));
     
     % bitangent transfer 
@@ -76,7 +82,7 @@ load('dataA24.mat')
     orb(5,3)=PF.i;
     orb(5,4)=PF.OM;
     orb(5,5)=PF.om;
-    orb(5,6)=orb(4,7);
+    orb(5,6)=pi;
     orb(5,7)=PF.theta;
     [orb(5,12), orb(5,13), orb(5,14), orb(5,15)] = Theta2t(orb(5,1),orb(5,2),orb(5,6),orb(5,7));
 

@@ -1,7 +1,7 @@
 function [ DeltaV , DeltaV1 , DeltaV2 , DeltaV3 , a_T1 , a_T2 , e_T1, e_T2 ] = biellBitang (a_i , e_i , a_f , e_f , r_aT , mu)
 
 
-r_p_i = a_i *(1 - e_i);
+r_p_i = a_i *(1 + e_i);
 r_pT1 = r_p_i ;
 
 r_p_f = a_f *(1 - e_f);

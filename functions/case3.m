@@ -69,8 +69,8 @@ load('dataA24.mat')
 %     orb(6,3)=PF.i;
 %     orb(6,4)=PF.OM;
 %     orb(6,5)=PF.om;
-%     orb(6,6)=orb(5,7)-pi;
-%     orb(6,7)=PF.theta;
+%     orb(6,6)=0;
+%     orb(6,7)=2*pi;
      [orb(5,12), orb(5,13), orb(5,14), orb(5,15)] = Theta2t(orb(5,1),orb(5,2),orb(5,6),orb(5,7));
 
     plotOrbit(orb,0.1)

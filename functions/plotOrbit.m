@@ -14,10 +14,10 @@ function plotOrbit(orbit,dth)
 % dth [1 x1]     true anomaly step size [ rad ]
 % ----------------------------------------------------------
 
-
+figure(2)
 [numberOrbits,~] = size(orbit)
 
-markerColors = colormap ( lines ( numberOrbits ));
+markerColors = colormap ( lines ( numberOrbits+1));
 
 
 rt=6371;                                                               % raggio terrestre
@@ -74,13 +74,31 @@ for j = 1:numberOrbits
 
     V = sqrt (VV (1 ,:) .^2 + VV (2 ,:) .^2 + VV (3 ,:) .^2) ;
   
-    plot3(X,Y,Z)
-    hold on
-    maneuvPoint = plot3 (X (1) , Y(1) , Z(1) ,'d','MarkerSize', 10 ,'MarkerEdgeColor', markerColors (numberOrbits , :) ,'MarkerFaceColor', markerColors (numberOrbits , :));
-    quiver3 (X (1) , Y(1) , Z (1) ,V_X (1) , V_Y (1) , V_Z (1),700,"filled",'-r','LineWidth' ,1.5 ,'MaxHeadSize',10) ;
+    plot3(X,Y,Z,'Color',markerColors (j, :))
+%     hold on
+    maneuvPoint = plot3 (X (1) , Y(1) , Z(1) ,'d','MarkerSize', 10 ,'MarkerEdgeColor', markerColors (j, :) ,'MarkerFaceColor', markerColors (j, :));
+    quiver3 (X (1) , Y(1) , Z (1) ,V_X (1) , V_Y (1) , V_Z (1),200,"filled",'-r','LineWidth' ,1.2 ,'MaxHeadSize',3) ;
     [R_peri ,~] = Param2rv (a,e,i,OM ,om ,0);
     [R_apo ,~] = Param2rv (a,e,i,OM ,om ,pi);
-    plot3 ([ R_peri(1) ,R_apo(1) ],[ R_peri(2),R_apo(2) ],[ R_peri(3) ,R_apo(3)],'-.b','LineWidth'   ,1); % semi - major axis
+    plot3 ([ R_peri(1) ,R_apo(1) ],[ R_peri(2),R_apo(2) ],[ R_peri(3) ,R_apo(3)],'-.b','LineWidth',1,'Color',markerColors (j, :)); % semi - major axis
+    
+    if(j==numberOrbits | j==1)
+         if(j==numberOrbits)
+            maneuvPoint = plot3 (X (end) , Y(end) , Z(end) ,'d','MarkerSize', 10 ,'MarkerEdgeColor', markerColors (j+1, :) ,'MarkerFaceColor', markerColors (j+1, :));
+         end
+        numTh = round (abs(2*pi )/dth);
+        th_v = linspace (0 ,2*pi , numTh );
+        RR = zeros (3, length ( th_v ));
+        VV = zeros (3, length ( th_v ));
+        for k = 1: length ( th_v )
+        
+            [R,V] = Param2rv ( a, e, i, OM, om, th_v(k));
+            RR (:,k) = R;
+            VV (:,k) = V;
+        end
+     
+        plot3(RR(1,:),RR(2,:),RR(3,:),'--','Color',markerColors (j, :))    
+    end
     
 
 end
