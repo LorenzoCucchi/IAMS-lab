@@ -18,8 +18,8 @@ mu=398600
 
 
 DV_mat = [];
-de = .00001;
-e_vect = [e_i:de :0.2];
+de = .001;
+e_vect = [e_i:de :0.99];
 
 for e_1 = e_vect (1):de:e_vect (end)
 % **********************

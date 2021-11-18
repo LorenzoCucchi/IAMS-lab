@@ -23,6 +23,7 @@ load('dataA24.mat')
     % change of e
     orb(2,:)=orb(1,:);
     orb(2,2)=0.0976433;
+    %orb(2,2)=0.2
     [orb(2,8),orb(2,5) , orb(1,7), orb(2,1)] = ChangeOrbitShape (orb(1,1), orb(1,2), orb(1,3), orb(1,4), orb(1,5), orb(1,3) , orb(1,4) , orb(2,2));
     orb(2,6)=0;   
     [orb(1,12), orb(1,13), orb(1,14), orb(1,15)] = Theta2t(PI.a,PI.e,PI.theta,orb(1,7));
@@ -64,16 +65,16 @@ load('dataA24.mat')
     
 %     
 %     % arrival at final point
-%     orb(6,1)=PF.a;
-%     orb(6,2)=PF.e;
-%     orb(6,3)=PF.i;
-%     orb(6,4)=PF.OM;
-%     orb(6,5)=PF.om;
-%     orb(6,6)=0;
-%     orb(6,7)=2*pi;
+    orb(6,1)=PF.a;
+    orb(6,2)=PF.e;
+    orb(6,3)=PF.i;
+    orb(6,4)=PF.OM;
+    orb(6,5)=PF.om;
+    orb(6,6)=0;
+    orb(6,7)=2*pi;
      [orb(5,12), orb(5,13), orb(5,14), orb(5,15)] = Theta2t(orb(5,1),orb(5,2),orb(5,6),orb(5,7));
 
-    plotOrbit(orb,0.1)
+    plotOrbit(orb,0.01)
 
     results = orb;
     results(7,8)=sum(orb(:,8));   
