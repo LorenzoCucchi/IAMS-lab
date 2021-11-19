@@ -8,4 +8,6 @@ Case 3: eccentricità --> piano --> omeghino --> eccentricità                  
 
 Case 4: piano --> omeghino --> biellittico                                             6.596  Km/s  317.96 min
 
-Case 4: biell --> plane --> omeghino                                                   5.723  Km/s  421 min
+Case 4: biell --> plane2 --> omeghino                                                  5.723  Km/s  421 min
+
+Case 5: biell --> plane1 --> omeghino                                                  5.791  Km/s  

@@ -83,7 +83,7 @@ hold off
 
 
 
-%% change of plan,w,biell
+%% 
     
     orb(1,1)=PI.a;
     orb(1,2)=PI.e;
@@ -104,7 +104,9 @@ hold off
     orb(1,7)=pi;
     orb(2,7)=pi;
     orb(4,:)=orb(1,:);
-    orb(4,5)=orb(4,5)+pi;
+    orb(4,3)=PF.i;
+    orb(4,4)=PF.OM;
+    orb(4,5)=orb(4,5);
     orb(4,6)=pi;
     orb(4,7)=0;
     orb(4,8)=0;
@@ -120,14 +122,17 @@ hold off
 % %
 
 
-    orb(3,:)=orb(3,:);
+    orb(3,:)=orb(2,:);
+    orb(3,9)=0;
+    orb(3,10)=0;
+    orb(3,11)=0;
     orb(3,4)=PF.OM;
     orb(3,3)=PF.i;
-    [orb(3,8),orb(2,7),orb(3,5)] = change_plane(orb(2,1),orb(2,2),orb(2,3),orb(2,4),orb(2,5),orb(4,3),orb(4,4));
-    orb(2,7)=orb(2,7)-pi;
+    [orb(3,8),orb(2,7),orb(3,5)] = change_plane(orb(2,1),orb(2,2),orb(2,3),orb(2,4),orb(2,5),PF.i,PF.OM);
+    orb(2,7)=orb(2,7);
     orb(3,6)=orb(2,7);
     [orb(3,12), orb(3,13), orb(3,14), orb(3,15)] = Theta2t(orb(3,1),orb(3,2),orb(3,6),orb(3,7));
-
+    orb(4,5)=orb(3,5);
 
     if(abs(PF.om-orb(4,5))>(pi/2))
         orb(5,5)=PF.om+pi;
