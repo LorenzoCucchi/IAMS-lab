@@ -59,7 +59,7 @@ grid on
 hold on
 [ DeltaV_TOT , k] = min( sum (DV_mat ,1)); % least sum ofcolumns = deltaVs_for_each_maneuver
 plot ( r_aT_vec (k), DeltaV_TOT / DVNormalizer , 'dr', 'MarkerSize', 8)
-r_aT=r_aT_vec(k);
+r_aT=r_aT_vec(k)
 DV_mat_max = max ( DV_mat (3: end ,:));
 
 DVNormalizer = DV_mat_max (1);
@@ -67,7 +67,7 @@ plot ( r_aT_vec , DV_mat_max / DVNormalizer ,'b','LineWidth',1);
 
 [ DeltaV_TOT , k] = min( DV_mat_max );
 DeltaV_vec = DV_mat (:,k);
-r_aTm = r_aT_vec (k)
+r_aT = r_aT_vec (k)
 DV_mat_max = max ( DV_mat (3: end ,k));
 
 plot ( r_aT_vec (k), DV_mat_max / DVNormalizer , 'db','MarkerSize', 8)

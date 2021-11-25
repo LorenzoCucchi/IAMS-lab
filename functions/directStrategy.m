@@ -76,25 +76,28 @@ orb(1,2)=PI.e;
 orb(1,3)=PI.i;
 orb(1,4)=PI.OM;
 orb(1,5)=PI.om;
-orb(1,6)=PI.theta;
+orb(1,6)=PI.theta-0.001;
+orb(1,7)=PI.theta;
 
 
 [orb(2,9),orb(2,10), orb(2,1), orb(2,2), orb(2,3), orb(2,4), orb(2,6), orb(2,7)] = directTransfer(PI.a, PI.e, PI.i, PI.OM, PI.om, PI.theta,   om_T,   PF.a, PF.e, PF.i, PF.OM, PF.om, PF.theta,   mu);
 orb(2,5)=om_T;
-
+[orb(2,12), orb(2,13), orb(2,14), orb(2,15)] = Theta2t(orb(2,1),orb(2,2),orb(2,6),orb(2,7));
 
 orb(3,1)=PF.a;
 orb(3,2)=PF.e;
 orb(3,3)=PF.i;
 orb(3,4)=PF.OM;
 orb(3,5)=PF.om;
-orb(3,6)=PF.theta;
+orb(3,6)=PF.theta-0.001;
 orb(3,7)=PF.theta;
 
 plotOrbit(orb,0.001)
 
 
-
+results = orb;
+results(4,8)=orb(2,9)+orb(2,10);
+results(4,12)=orb(2,12);
 
 
 

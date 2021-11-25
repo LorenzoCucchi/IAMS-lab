@@ -29,7 +29,7 @@ earth=surface(xs,ys,zs);
 shading flat;
 imData=imread('map.jpg');                                              % lettura mappa(inserire qua 'nomeMappa.jpg' che deve stare nella stessa cartella)
 set(earth,'facecolor','texturemap','cdata',imData,'edgecolor','none'); % incolla mappa su sfera
-axis square
+axis equal
 
 hold on
 grid on
