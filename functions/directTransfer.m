@@ -1,5 +1,8 @@
 function [DeltaV_T1, DeltaV_T2, a_T, e_T, i_T, OM_T, th_T_i, th_T_f] = directTransfer(a_i, e_i, i_i, OM_i, om_i, th_i,    om_T,   a_f, e_f, i_f, OM_f, om_f, th_f,   mu)
 
+if nargin == 13
+    mu = 398600.44;
+end
 
 I = [1 0 0]';
 J = [0 1 0]';

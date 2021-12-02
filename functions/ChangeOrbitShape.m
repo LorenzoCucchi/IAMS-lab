@@ -25,7 +25,7 @@ function [ DeltaV , om_t , th_t , a_t] = ChangeOrbitShape (a_i ,e_i , i_i , OM_i
 %
 % 
 
-if nargin == 4
+if nargin == 8
     mu = 398600.44;
 end
 
