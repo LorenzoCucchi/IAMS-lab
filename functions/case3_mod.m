@@ -32,8 +32,9 @@ load('dataA24.mat')
     orb(3,:)=orb(2,:);
     orb(3,4)=PF.OM;
     orb(3,3)=PF.i;
-    [orb(3,9),orb(2,7),orb(3,5)] = change_plane(orb(2,1),orb(2,2),orb(2,3),orb(2,4),orb(2,5),PF.i,PF.OM);
+    [~,orb(2,7),orb(3,5)] = change_plane(orb(2,1),orb(2,2),orb(2,3),orb(2,4),orb(2,5),PF.i,PF.OM);
     orb(3,6)=orb(2,7);
+    orb(3,9)=0;
     
 
     % direct
@@ -88,4 +89,5 @@ load('dataA24.mat')
     results = orb;
     results(7,8)=sum(orb(:,8));   
     results(7,12)=sum(orb(:,12));
-    seconds(results(7,12))
+    minutes(seconds(results(7,12)))
+   

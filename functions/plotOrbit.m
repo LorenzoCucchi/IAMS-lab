@@ -17,7 +17,8 @@ function plotOrbit(orbit,dth)
 figure(2)
 [numberOrbits,~] = size(orbit)
 
-markerColors = colormap ( lines ( numberOrbits+1));
+
+markerColors = colormap(winter( numberOrbits+1));
 
 
 rt=6371;                                                               % raggio terrestre
@@ -73,11 +74,25 @@ for j = 1:numberOrbits
     V_Z = VV (3 ,:);
 
     V = sqrt (VV (1 ,:) .^2 + VV (2 ,:) .^2 + VV (3 ,:) .^2) ;
-  
-    plot3(X,Y,Z,'Color',markerColors (j, :))
-%     hold on
+
+    V_min = min(V);
+    V_max = max(V);
+    V_span = V_max-V_min;
+
+    cmapDim = 256;
+    cmap = parula ( cmapDim );
+
+    for k = 2: length (th_v)
+            
+        cmapIndex = floor ( ( cmapDim -1) * (V(k)-V_min )/ V_span ) + 1;
+        stepColor = cmap ( cmapIndex ,:) ;
+        plot3(X(k -1: k), Y(k -1: k), Z(k -1: k),'LineWidth', 1.5 ,'Color', stepColor );
+    end
+
+
+    %     hold on
     maneuvPoint = plot3 (X (1) , Y(1) , Z(1) ,'d','MarkerSize', 10 ,'MarkerEdgeColor', markerColors (j, :) ,'MarkerFaceColor', markerColors (j, :));
-    quiver3 (X (1) , Y(1) , Z (1) ,V_X (1) , V_Y (1) , V_Z (1),200,"filled",'-r','LineWidth' ,1.2 ,'MaxHeadSize',3) ;
+    %quiver3 (X (1) , Y(1) , Z (1) ,V_X (1) , V_Y (1) , V_Z (1),400,"filled",'-r','LineWidth' ,1.2 ,'MaxHeadSize',3) ;
     [R_peri ,~] = Param2rv (a,e,i,OM ,om ,0);
     [R_apo ,~] = Param2rv (a,e,i,OM ,om ,pi);
     plot3 ([ R_peri(1) ,R_apo(1) ],[ R_peri(2),R_apo(2) ],[ R_peri(3) ,R_apo(3)],'-.b','LineWidth',1,'Color',markerColors (j, :)); % semi - major axis
@@ -90,14 +105,48 @@ for j = 1:numberOrbits
         th_v = linspace (0 ,2*pi , numTh );
         RR = zeros (3, length ( th_v ));
         VV = zeros (3, length ( th_v ));
-        for k = 1: length ( th_v )
         
-            [R,V] = Param2rv ( a, e, i, OM, om, th_v(k));
-            RR (:,k) = R;
-            VV (:,k) = V;
+        for k = 1: length ( th_v )
+        [R,V] = Param2rv ( a, e, i, OM, om, th_v(k));
+        RR (:,k) = R;
+        VV (:,k) = V;
         end
+    
+        X = RR (1 ,:);
+        Y = RR (2 ,:);
+        Z = RR (3 ,:);
+        
+        V_X = VV (1 ,:);
+        V_Y = VV (2 ,:);
+        V_Z = VV (3 ,:);
+    
+        V = sqrt (VV (1 ,:) .^2 + VV (2 ,:) .^2 + VV (3 ,:) .^2) ;
+    
+        V_min = min(V);
+        V_max = max(V);
+        V_span = V_max-V_min;
+    
+        cmapDim = 256;
+        cmap = parula ( cmapDim );
+    
+        for k = 2: length (th_v)
+                
+            cmapIndex = floor ( ( cmapDim -1) * (V(k)-V_min )/ V_span ) + 1;
+            stepColor = cmap ( cmapIndex ,:) ;
+            plot3(X(k -1: k), Y(k -1: k), Z(k -1: k),'--' ,'Color', stepColor );
+        end
+%         for k = 2: length ( th_v )
+%             
+%             cmapIndex = floor((cmapDim -1)*(V(k)-V_min )/ V_span ) + 1
+%             stepColor = cmap ( cmapIndex ,:) 
+%             [R,V] = Param2rv ( a, e, i, OM, om, th_v(k));
+%             R (:,k) = R;
+%             V (:,k) = V;
+%             plot3(X(k -1: k), Y(k -1: k), Z(k -1: k),'--','Color',stepColor) 
+%         
+%         end
      
-        plot3(RR(1,:),RR(2,:),RR(3,:),'--','Color',markerColors (j, :))    
+        %plot3(RR(1,:),RR(2,:),RR(3,:),'--','Color',markerColors (j, :))    
     end
     
 

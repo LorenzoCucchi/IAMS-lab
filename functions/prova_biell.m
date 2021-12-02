@@ -20,7 +20,7 @@ mu=398600;
 DV_mat = [];
 r_p_f = a_f*(1-e_f);
 dr_aT_vec = 1;
-r_aT_vec = [r_p_f:dr_aT_vec:32000];
+r_aT_vec = [r_p_f:dr_aT_vec:50000];
 
 for r_aT = r_aT_vec(1):dr_aT_vec:r_aT_vec(end)
 
