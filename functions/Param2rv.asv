@@ -39,15 +39,8 @@ r = p/(1+e*cos(theta));
 % vv = T_pf2ge*v_pf;
 
 r_PF = r * [cos(theta), sin(theta), 0]'; % Position vector [km]
-v_PF = sqrt (mu/p) * [- sin(theta), (e+cos(theta)), 0]'; % Velocity
+v_PF = sqrt (mu/p) * [- sin (theta), (e+cos(theta)), 0]'; % Velocity
 
-R_om = [ cos(om) sin(om) 0 ; -sin(om) cos(om) 0 ; 0 0 1 ];
-R_i = [ 1 0 0 ; 0 cos(i) sin(i); 0 -sin(i) cos(i)];
-R_OM = [ cos(OM) sin(OM) 0 ; -sin(OM) cos(OM) 0 ; 0 0 1 ];
-R313 = R_om * R_i * R_OM ; % ECI --> PF (i.e. x_PF = R313 *x_ECI )
 
-% PF ->ECI Transformation ( inverse of R313 )
-rr = R313'* r_PF ;
-vv = R313'* v_PF ;
 
 end

@@ -1,0 +1,27 @@
+clear all
+close all
+clc
+
+load dataA24.mat
+
+i = rad2deg(wrapTo2Pi(PI.i))
+OM = rad2deg(wrapTo2Pi(PI.OM))
+om = rad2deg(wrapTo2Pi(PI.om))
+theta = rad2deg(wrapTo2Pi(PI.theta))
+
+p = PI.a*(1-PI.e.^2)
+T = minutes(seconds(2*pi*sqrt(PI.a^3/398600.44)))
+
+eps= (norm(PI.v)^2)/2-398600.44/norm(PI.r)
+
+
+
+p = 9.9286e+03
+
+
+T = 165.0305
+
+
+eps =
+
+  -19.9973

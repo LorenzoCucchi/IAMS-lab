@@ -34,6 +34,14 @@ axis equal
 
 hold on
 grid on
+lun = 13000;
+
+    quiver3(0,0,0,lun,0,0,1.2,'-.','color','k','LineWidth',0.5);
+    quiver3(0,0,0,0,lun,0,1.2,'-.','color','k','LineWidth',0.5);
+    quiver3(0,0,0,0,0,lun,1.2,'-.','color','k','LineWidth',0.5);
+ text(lun+3000,0,0,'I','FontSize',12,'color','k');
+    text(0,lun+3000,0,'J','FontSize',12,'color','k');
+    text(0,0,lun+3000,'K','FontSize',12,'color','k');
 title("3D ORBIT");
 xlabel("equinox line [km]");
 ylabel("y [km]");
@@ -101,7 +109,7 @@ for j = 1:numberOrbits
          if(j==numberOrbits)
             maneuvPoint = plot3 (X (end) , Y(end) , Z(end) ,'d','MarkerSize', 10 ,'MarkerEdgeColor', markerColors (j+1, :) ,'MarkerFaceColor', markerColors (j+1, :));
          end
-        numTh = round (abs(2*pi )/dth);
+        numTh = round (abs(2*pi )/0.1);
         th_v = linspace (0 ,2*pi , numTh );
         RR = zeros (3, length ( th_v ));
         VV = zeros (3, length ( th_v ));
@@ -148,6 +156,8 @@ for j = 1:numberOrbits
      
         %plot3(RR(1,:),RR(2,:),RR(3,:),'--','Color',markerColors (j, :))    
     end
+
+    
     
 
 end

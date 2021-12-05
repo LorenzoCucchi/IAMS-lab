@@ -38,7 +38,7 @@ end
 [~, k] = min( sum(DV_mat,1) ) % least sum of columns=deltaVs_for_each_maneuver
 [~, ke] = min(Dt_mat)  
 % DELTA V
-DeltaV_vec = DV_mat(:,k)
+DeltaV_vec = DV_mat(:,ke)
 DeltaV_TOT = sum(DeltaV_vec)
 om_T = om_T_vect(k)
 
@@ -62,14 +62,16 @@ om_T = om_T_vect(k)
         [DeltaV_T1, DeltaV_T2, a_T, e_T, i_T, OM_T, th_T_i, th_T_f] = directTransfer(PI.a, PI.e, PI.i, PI.OM, PI.om, PI.theta,    om_T,   PF.a, PF.e, PF.i, PF.OM, PF.om, PF.theta,   mu);
     %**********************
 
-
+%rad2deg(th_T_i)
+%rad2deg(th_T_f)
 % TRANSFER TIME
-t1 = Theta2t(a_T,e_T,mu,th_T_i,th_T_f);
-Deltat = t1;
+%t1 = Theta2t(a_T,e_T,mu,th_T_i,th_T_f);
+%Deltat = t1
 
-Deltat_vec = [t1]
+%Deltat_vec = [t1]
+
 %%
-om_T = deg2rad(om_T_vect(k));
+om_T = deg2rad(om_T_vect(ke));
 
 orb(1,1)=PI.a;
 orb(1,2)=PI.e;
@@ -98,6 +100,7 @@ plotOrbit(orb,0.001)
 results = orb;
 results(4,8)=orb(2,9)+orb(2,10);
 results(4,12)=orb(2,12);
+orb(2,12)
 
 
 
