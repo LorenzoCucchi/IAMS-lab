@@ -1,4 +1,4 @@
-function [delta_V,TH_i,om_f] = change_plane(a,e,i_i,OM_i,om_i,i_f,OM_f,mu)
+function [delta_V,TH_i,om_f] = change_plane(a,e,i_i,OM_i,om_i,i_f,OM_f,mu,app)
 
 % INPUT
 %----------------------------------------------------
@@ -59,9 +59,17 @@ else
 end
 
 
-if cos(TH_i)>0
-    TH_i=TH_i+pi;
+if nargin == 9
+    if app>0
+      TH_i=TH_i+pi;
+    end   
 end
+
+% if cos(TH_i)>0
+%     TH_i=TH_i+pi;
+% end
+
+
 
 TH_i = wrapTo2Pi(TH_i);
 v_teta = sqrt(mu/p)*(1+e*cos(TH_i));

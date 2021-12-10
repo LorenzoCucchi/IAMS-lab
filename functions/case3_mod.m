@@ -52,7 +52,7 @@ load('dataA24.mat')
     orb(4,1)=orb(3,1);
     orb(4,2)=orb(3,2);
     orb(4,3)=orb(3,3);
-    PF.om-orb(3,5)
+    PF.om-orb(3,5);
     orb(4,4)=orb(3,4);
     orb(4,5)=PF.om+pi;
     [orb(4,9), orb(3,7), orb(4,6)] = Change_w(orb(4,1), orb(4,2), orb(3,5), orb(4,5),orb(3,6));
@@ -90,4 +90,6 @@ load('dataA24.mat')
     results(7,8)=sum(orb(:,8));   
     results(7,12)=sum(orb(:,12));
     minutes(seconds(results(7,12)))
+
+      r = results_csv(results);
    

@@ -15,14 +15,14 @@ function plotOrbit(orbit,dth)
 % ----------------------------------------------------------
 
 figure(2)
-[numberOrbits,~] = size(orbit)
+[numberOrbits,~] = size(orbit);
 
 
 markerColors = colormap(winter( numberOrbits+1));
 
 
 rt=6371;                                                               % raggio terrestre
-[xs,ys,zs]=sphere;
+[xs,ys,zs]=sphere(100);
 xs=xs*rt;
 ys=ys*rt;
 zs=-zs*rt;
@@ -39,7 +39,7 @@ lun = 13000;
     quiver3(0,0,0,lun,0,0,1.2,'-.','color','k','LineWidth',0.5);
     quiver3(0,0,0,0,lun,0,1.2,'-.','color','k','LineWidth',0.5);
     quiver3(0,0,0,0,0,lun,1.2,'-.','color','k','LineWidth',0.5);
- text(lun+3000,0,0,'I','FontSize',12,'color','k');
+    text(lun+3000,0,0,'I','FontSize',12,'color','k');
     text(0,lun+3000,0,'J','FontSize',12,'color','k');
     text(0,0,lun+3000,'K','FontSize',12,'color','k');
 title("3D ORBIT");
@@ -101,6 +101,7 @@ for j = 1:numberOrbits
     %     hold on
     maneuvPoint = plot3 (X (1) , Y(1) , Z(1) ,'d','MarkerSize', 10 ,'MarkerEdgeColor', markerColors (j, :) ,'MarkerFaceColor', markerColors (j, :));
     %quiver3 (X (1) , Y(1) , Z (1) ,V_X (1) , V_Y (1) , V_Z (1),400,"filled",'-r','LineWidth' ,1.2 ,'MaxHeadSize',3) ;
+    legendObjs (j) = maneuvPoint ;
     [R_peri ,~] = Param2rv (a,e,i,OM ,om ,0);
     [R_apo ,~] = Param2rv (a,e,i,OM ,om ,pi);
     plot3 ([ R_peri(1) ,R_apo(1) ],[ R_peri(2),R_apo(2) ],[ R_peri(3) ,R_apo(3)],'-.b','LineWidth',1,'Color',markerColors (j, :)); % semi - major axis
@@ -108,6 +109,7 @@ for j = 1:numberOrbits
     if(j==numberOrbits | j==1)
          if(j==numberOrbits)
             maneuvPoint = plot3 (X (end) , Y(end) , Z(end) ,'d','MarkerSize', 10 ,'MarkerEdgeColor', markerColors (j+1, :) ,'MarkerFaceColor', markerColors (j+1, :));
+            legendObjs (j) = maneuvPoint ;
          end
         numTh = round (abs(2*pi )/0.1);
         th_v = linspace (0 ,2*pi , numTh );
@@ -157,7 +159,7 @@ for j = 1:numberOrbits
         %plot3(RR(1,:),RR(2,:),RR(3,:),'--','Color',markerColors (j, :))    
     end
 
-    
+    legend(legendObjs)
     
 
 end
