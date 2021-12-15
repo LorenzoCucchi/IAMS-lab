@@ -32,7 +32,7 @@ load('dataA24.mat')
     orb(3,:)=orb(2,:);
     orb(3,4)=PF.OM;
     orb(3,3)=PF.i;
-    [orb(3,8),orb(2,7),orb(3,5)] = change_plane(orb(2,1),orb(2,2),orb(2,3),orb(2,4),orb(2,5),PF.i,PF.OM);
+    [orb(3,8),orb(2,7),orb(3,5)] = change_plane(orb(2,1),orb(2,2),orb(2,3),orb(2,4),orb(2,5),PF.i,PF.OM,398600.44,1);
     orb(3,6)=orb(2,7);
     
     [orb(2,12), orb(2,13), orb(2,14), orb(2,15)] = Theta2t(orb(2,1),orb(2,2),orb(2,6),orb(2,7));

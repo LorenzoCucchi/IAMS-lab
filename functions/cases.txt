@@ -12,6 +12,6 @@ Case 4: biell --> plane2 --> omeghino                                           
 
 ok4 Case 5: biell --> plane1 --> omeghino                                                  5.791  Km/s  375.94 min
 
-Case 6: direct                                                                         15.482 Km/s  63.67 min
+Case 6: direct                                                                         20.9 Km/s  63.67 min
 
 ok3 Case 7: case 3mod  direct to piano omeghino eccentricity                               6.911  Km/s  105.85 min                             

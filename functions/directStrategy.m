@@ -12,9 +12,9 @@ mu=398600.44;
     
 DV_mat = [];
 Dt_mat = [];
-dom_T = 0.01*pi/180;
-om_T_vect = ([deg2rad(0):dom_T:deg2rad(360)]);
-%om_T_vect = ([deg2rad(250):dom_T:deg2rad(344)]);
+dom_T = 0.1*pi/180
+%om_T_vect = ([deg2rad(0):dom_T:deg2rad(360)]);
+om_T_vect = ([deg2rad(100):dom_T:deg2rad(300)]);
 
     
 for om_T = om_T_vect(1):dom_T:om_T_vect(end)
@@ -72,7 +72,8 @@ om_T = om_T_vect(k)
 
 %%
 om_T = deg2rad(om_T_vect(ke));
-
+% for om_T=0:1:360
+% om_T=deg2rad(om_T)
 orb(1,1)=PI.a;
 orb(1,2)=PI.e;
 orb(1,3)=PI.i;
@@ -100,7 +101,14 @@ plotOrbit(orb,0.001)
 results = orb;
 results(4,8)=orb(2,9)+orb(2,10);
 results(4,12)=orb(2,12);
-orb(2,12)
+orb(2,12);
 
-  r = results_csv(results);
+r = results_csv(results);
+% figure(2)
+% plot(rad2deg(om_T),orb(2,2),'*');
+% hold on
+% figure(3)
+% plot(rad2deg(om_T),results(4,8),'b')
+% hold on
 
+%end

@@ -24,10 +24,10 @@ e_vect = [e_i:de :0.99];
 for e_1 = e_vect (1):de:e_vect (end)
 % **********************
 % DIMENSION CHANGE
-[ DeltaV_ecc , om_1 , th_1 , a_1] = ChangeOrbitShape (a_i , e_i, i_i , OM_i , om_i , i_i , OM_i , e_1 , mu);
-
+[ DeltaV_ecc , om_1 , th_1 , a_1] = ChangeOrbitShape (a_i , e_i, i_i , OM_i , om_i , i_f , OM_f , e_1 , mu);
+om_1=om_1+pi;
 % PLANE CHANGE
-[ DeltaV_plane , th_PC ,om_2] = change_plane (a_1 , e_1 ,i_i , OM_i , om_1 , i_f , OM_f , mu);
+[ DeltaV_plane , th_PC ,om_2] = change_plane (a_1 , e_1 ,i_i , OM_f , om_1 , i_f , OM_f , mu,1);
 
 % PERIAPSIS ARGUMENT CHANGE
 if(abs(om_f-om_2)>(pi/2))
