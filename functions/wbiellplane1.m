@@ -71,7 +71,7 @@ r_aT = r_aT_vec (k)
 DV_mat_max = max ( DV_mat (3: end ,k));
 
 plot ( r_aT_vec (k), DV_mat_max / DVNormalizer , 'db','MarkerSize', 8)
-legend ('Normalized  Deltav_ {tot }( r_{a,t}) ', ' Deltav_ {tot } opt.', 'Normalized max ( Deltav_3 ,  Deltav_4 , Deltav_5 )', 'max ( Deltav_3 ,  Deltav_4 ,  Deltav_5 )opt .', 'Location ', 'northwest')
+legend ('Normalized  Deltav_ {tot }( r_{a,t}) ', ' Deltav_ {tot } opt.', 'Normalized max ( Deltav_3 ,  Deltav_4 , Deltav_5 )', 'max ( Deltav_3 ,  Deltav_4 ,  Deltav_5 )opt .')
 xlabel ('r_{a,t} [km]')
 ylabel ('Normalized  Deltav')
 
